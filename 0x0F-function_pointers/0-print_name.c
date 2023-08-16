@@ -1,15 +1,18 @@
-#include "function_pointers.h"
 #include <stdio.h>
-/**
- *  * print_name - print name using pointer to function
- *   * @name: string to add
- *    * @f: pointer to function
- *     * Return: nothing
- *      **/
-void print_name(char *name, void (*f)(char *))
-{
-		if (name == NULL || f == NULL)
-					return;
 
-			f(name);
+void print_name(char *name, void (*f)(char *)) {
+    f(name);
+}
+
+// Example function to be passed as the second argument to print_name
+void print_with_greeting(char *name) {
+    printf("Hello, %s!\n", name);
+}
+
+int main() {
+    char myName[] = "John";
+    
+    print_name(myName, print_with_greeting);
+
+    return 0;
 }
